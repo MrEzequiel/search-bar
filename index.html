@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Search Bar</title>
+  </head>
+  <body>
+    <header>
+      <div class="home">
+        <span class="material-icons"> home </span>
+      </div>
+      <div class="search-bar">
+        <input id="search-input" type="text" placeholder="Pesquisar" />
+        <button class="button-search" type="button">
+          <span class="material-icons"> search </span>
+        </button>
+        <button type="button" class="mic-button">
+          <span class="material-icons"> mic </span>
+        </button>
+      </div>
+      <div class="user">
+        <span class="material-icons"> person </span>
+      </div>
+    </header>
+    <div class="modal-overlay">
+      <div class="modal">
+        <div class="close">
+          <span class="material-icons"> close </span>
+        </div>
+        <h2>Ouvindo...</h2>
+        <p class="text-modal"></p>
+        <div class="modal-mic">
+          <span class="material-icons"> mic </span>
+          <small>Clique aqui para parar de falar</small>
+        </div>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
