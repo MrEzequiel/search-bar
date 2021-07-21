@@ -1,3 +1,4 @@
+/* GLOBAL ==========================*/
 * {
   margin: 0;
   padding: 0;
@@ -14,18 +15,24 @@ body {
   font: 400 1.6rem 'Lato', sans-serif;
 }
 
+/* RESET ==========================*/
+
 button,
 input {
   border: none;
   outline: none;
 }
 
+/* HEADER ==========================*/
+
 header {
+  position: relative;
   background: #202020;
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 2fr 1fr;
 
+  min-height: 8.5rem;
   padding: 2rem;
   font-size: 2rem;
 
@@ -36,23 +43,32 @@ header:hover {
   box-shadow: 0px 5px 6px 0px #00000038;
 }
 
-header .home span {
+/* HOME ==========================*/
+
+.home span {
   cursor: pointer;
   font-size: 4rem;
 }
 
-header .search-bar {
+/* SEARCH-BAR ==========================*/
+
+.search-bar {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-header .search-bar input {
-  width: 60%;
+.search-bar.search-bar-responsive {
+  position: absolute;
+}
+
+.search-bar input {
+  width: 70%;
   height: 3rem;
   font-size: 1.5rem;
 
   border: 0.1rem solid rgba(204, 204, 204, 0.253);
+  border-right: none;
   border-radius: 0.2rem 0 0 0.2rem;
   background: #121212;
   color: #fff;
@@ -61,15 +77,15 @@ header .search-bar input {
   transition: border 200ms;
 }
 
-header .search-bar input:focus {
+.search-bar input:focus {
   border: 0.1rem solid rgba(65, 105, 225, 0.74);
 }
-
-header .search-bar .button-search {
+.search-bar .button-search {
   background: #323232;
   color: #666666;
   height: 3rem;
   border: 0.1rem solid rgba(204, 204, 204, 0.253);
+  border-left: none;
   border-radius: 0 0.2rem 0.2rem 0;
 
   padding: 0 1.75rem;
@@ -79,9 +95,15 @@ header .search-bar .button-search {
   align-items: center;
 
   margin-right: 2rem;
+
+  transition: color 200ms;
 }
 
-header .search-bar button {
+.search-bar .button-search:hover {
+  color: white;
+}
+
+.search-bar button {
   background: transparent;
   color: #fff;
   display: flex;
@@ -90,17 +112,60 @@ header .search-bar button {
   cursor: pointer;
 }
 
-header .user {
+/* OPTIONS ==========================*/
+
+.options {
+  display: flex;
+  align-items: center;
+
   justify-self: flex-end;
 }
-header .user span {
-  cursor: pointer;
-  font-size: 4rem;
+
+.options div {
+  display: flex;
+  align-items: center;
+  margin-right: 3rem;
 }
 
+.options div span {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  font-size: 2.5rem;
+  user-select: none;
+
+  transition: color 250ms;
+}
+
+.options div span:active {
+  color: #323232;
+}
+
+.options .search-responsive {
+  display: none;
+}
+
+.options .search-responsive .button-search {
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.options .user {
+  position: relative;
+  margin-right: 0;
+}
+
+.options .user span {
+  background: #121212;
+  border-radius: 50%;
+  padding: 1rem;
+}
+/* MODAL ==========================*/
 .modal-overlay {
   background: #00000085;
   position: fixed;
+  z-index: 99;
   width: 100%;
   height: 100%;
   top: 0;
@@ -123,7 +188,15 @@ header .user span {
   line-height: 2.75rem;
 
   border-radius: 0.3rem;
+
+  transform: scale(0);
+  transition: transform 250ms;
 }
+
+.modal.active {
+  transform: scale(1);
+}
+
 .modal:hover {
   box-shadow: 0px 5px 6px 0px #00000038;
 }
@@ -179,4 +252,28 @@ header .user span {
   display: block;
   margin-top: 1rem;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 5% 70% 25%;
+  }
+}
+
+@media (max-width: 700px) {
+  .search-bar input {
+    width: 50%;
+  }
+}
+
+@media (max-width: 550px) {
+  header {
+    grid-template-columns: 1fr 2fr;
+  }
+  .search-bar {
+    display: none;
+  }
+  .options .search-responsive {
+    display: flex;
+  }
 }

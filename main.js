@@ -1,5 +1,6 @@
 const micButton = document.querySelector('.mic-button')
 const modal = document.querySelector('.modal-overlay')
+const contentModal = document.querySelector('.modal')
 const buttonCloseModal = document.querySelector('.close')
 const modalMic = document.querySelector('.modal-mic')
 const text = document.querySelector('.text-modal')
@@ -8,9 +9,13 @@ const searchInput = document.querySelector('#search-input')
 const Modal = {
   open() {
     modal.classList.add('active')
+    contentModal.classList.add('active')
   },
   close() {
-    modal.classList.remove('active')
+    contentModal.classList.remove('active')
+    setTimeout(() => {
+      modal.classList.remove('active')
+    }, 250)
   }
 }
 
@@ -43,9 +48,8 @@ micButton.addEventListener('click', event => {
   if (!recognition) {
     return
   }
-
+  text.innerHTML = ''
   Modal.open()
-
   recognition.start()
 })
 
@@ -58,8 +62,7 @@ buttonCloseModal.addEventListener('click', event => {
 
   if (text.innerHTML != '') {
     searchInput.value = text.innerHTML
-    text.innerHTML = ''
   }
-
+  text.innerHTML = ''
   Modal.close()
 })
